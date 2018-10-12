@@ -74,7 +74,5 @@ def main():
     # pointing back to linked list
     
 
-
-
 if __name__ == "__main__":
     main() 
