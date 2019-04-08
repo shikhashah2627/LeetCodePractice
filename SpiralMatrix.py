@@ -1,4 +1,5 @@
-## def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+class Solution:
+    ## def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
     Output = []
     def spiralOrder(self, matrix):
         FinalOutput = []
@@ -41,3 +42,4 @@
                     return FinalOutput
         finally:
             self.Output = None
+            
