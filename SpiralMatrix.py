@@ -3,17 +3,22 @@
             # the matrix in spiral order.
 
 class Solution:
+    Output = []
+    # def __init__(self, Output):
+    #     self.Output = []
     def spiralOrder(self, matrix):
-        Output = []
         InputLen = len(matrix)
         cmpMidCol = []
         if InputLen == 0:
-            return Output
+            return self.Output
         elif InputLen == 1:
-            Output += matrix[0]
-            return Output
+            self.Output += matrix[0]
+            FinalOutput = self.Output
+            self.Output = []
+            return FinalOutput
         else:
-            Output += matrix[0]
+            self.Output = []
+            self.Output += matrix[0]
             lastCol = []
             firstCol = []
             
@@ -27,16 +32,27 @@ class Solution:
                     else:
                         midCol.append(matrix[row][col])
                 cmpMidCol.append(midCol)
-            Output += lastCol
+            self.Output += lastCol
             lastRow = matrix[InputLen - 1]
-            Output += lastRow[::-1] 
-            Output += reversed(firstCol)
-            return spiralOrder(self,cmpMidCol)
-s1 = Solution()  
-Input = [
- [ 1, 2, 3, 4 ],
- [ 5, 6, 7, 8 ],
+            self.Output += lastRow[::-1] 
+            self.Output += reversed(firstCol)
+            if len(cmpMidCol) >= 1:
+                return self.spiralOrder(cmpMidCol)
+            else:
+                FinalOutput = self.Output
+                self.Output = []
+                return FinalOutput
+
+Input1 = [
+ [ 1, 2, 3, 4],
+ [ 5, 6, 7, 8],
  [ 9, 10, 11, 12],
- [13, 14, 15, 16],
 ]
-print(s1.spiralOrder(Input))
+Input2 = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+Input3 = [[2,3]]
+Input4 = [[1]]
+s1 = Solution()  
+s1.spiralOrder(Input1)
+s1.spiralOrder(Input2)
+print(s1.spiralOrder(Input4))
+print(s1.spiralOrder(Input3))
