@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
 
@@ -19,28 +21,39 @@ public class Main {
 //        System.out.println(isRotation(s1, s2));
 //
 //        // Ch-2 LinkedList Implementation
-        Node n1 = new Node(7);
-        Node n2 = new Node(5);
-        Node n3 = new Node(6);
-        Node n8 = new Node(8);
-        Node n4 = new Node(1);
-        Node n5 = new Node(8);
-        Node n6 = new Node(5);
-        Node n7 = new Node(6);
-        n1.next = n2;
-        n2.next = n3;
-//        n3.next = n4;
-        n8.next = n4;
-        n4.next = n5;
-        n5.next = n6;
-        n6.next = n7;
+//        Node n1 = new Node(7);
+//        Node n2 = new Node(5);
+//        Node n3 = new Node(6);
+//        Node n8 = new Node(8);
+//        Node n4 = new Node(1);
+//        Node n5 = new Node(8);
+//        Node n6 = new Node(5);
+//        Node n7 = new Node(6);
+//        n1.next = n2;
+//        n2.next = n3;
+////        n3.next = n4;
+//        n8.next = n4;
+//        n4.next = n5;
+//        n5.next = n6;
+//        n6.next = n7;
 //        Node.printLinkedList(Node.removeDups(n1));
 //        Node.printLinkedList(Node.kthToLast(n1,3));
 //        Node.printLinkedList(Node.deleteMiddleNode(n1));
 //        //Node.partitionArrangement(n1, 2);
 //        Node.printLinkedList(Node.sumLists(n1, n4));
 //        System.out.println(Node.isPalindrome(n1));
-        Node.printLinkedList(Node.intersectingNode(n1, n4));
+//        Node.printLinkedList(Node.intersectingNode(n1, n4));
+        int[] nums = new int[]{1, 1, 1, 4, 2, 2, 3, 3, 4, 5};
+        shortestDistanceToCharacter c1 = new shortestDistanceToCharacter();
+//        int output[] = c1.productExceptSelf(nums);
+//        for (int i=0; i<output.length; i++) {
+//            System.out.println(output[i]);
+//        }
+        List<Integer> finalOutput;
+        finalOutput = c1.topKFrequent(nums, 2);
+        for (int i=0; i<finalOutput.size(); i++) {
+            System.out.println(finalOutput.get(i));
+        }
     }
 
     public static ArrayList<String> merge(String[] words, String[] more) {
