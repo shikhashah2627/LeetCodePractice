@@ -1,3 +1,4 @@
+import javax.annotation.processing.SupportedSourceVersion;
 import java.util.*;
 
 public class shortestDistanceToCharacter {
@@ -60,20 +61,46 @@ public class shortestDistanceToCharacter {
         for (int i=0; i<nums.length; i++) {
             if (frequentElement.containsKey(nums[i])) {
                 int value = frequentElement.get(nums[i]);
-                int count = value++;
-                frequentElement.replace(nums[i],value,count);
+                value++;
+                frequentElement.replace(nums[i],value);
             } else {
                 frequentElement.put(nums[i],1);
             }
         }
+        // init heap 'the less frequent element first'
+        PriorityQueue<Integer> heap = new PriorityQueue<Integer>
+                ((n1, n2) -> frequentElement.get(n1) - frequentElement.get(n2));
+        // keep k top frequent elements in the heap
+        for (int n: frequentElement.keySet()) {
+            heap.add(n);
+            if (heap.size() > k)
+                heap.poll();
+        }
         LinkedList<Integer> kOccurrence = new LinkedList();
-        for( Integer key: frequentElement.keySet() ) {
-            if (frequentElement.get(key) >= k) {
-//                System.out.println(key);
-                kOccurrence.add(key);
+        while (!heap.isEmpty())
+            kOccurrence.add(heap.poll());
+        Collections.reverse(kOccurrence);
+        return kOccurrence;
+    }
+
+    //Given a set of distinct integers, nums, return all possible subsets (the power set).
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> out = new ArrayList<List<Integer>>();
+        out.add(new ArrayList<Integer>());
+
+        for (int i = nums.length - 1; i >= 0; i--) {
+            int maximum = out.size();
+            System.out.println("Sie"+maximum);
+            //Create new lists with all the lists already made + the current nums[i];
+            for (int j = 0; j < maximum; j++) {
+                System.out.println("Inside" +out.get(j));
+                List<Integer> curr = new ArrayList<Integer>(out.get(j));
+                System.out.println("Before Curr" +curr);
+                curr.add(nums[i]);
+                System.out.println("After Curr" +curr);
+                out.add(curr);
             }
         }
-
-        return kOccurrence;
+        return out;
     }
 }

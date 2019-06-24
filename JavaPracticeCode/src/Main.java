@@ -43,14 +43,14 @@ public class Main {
 //        Node.printLinkedList(Node.sumLists(n1, n4));
 //        System.out.println(Node.isPalindrome(n1));
 //        Node.printLinkedList(Node.intersectingNode(n1, n4));
-        int[] nums = new int[]{1, 1, 1, 4, 2, 2, 3, 3, 4, 5};
+        int[] nums = new int[]{1, 2, 3};
         shortestDistanceToCharacter c1 = new shortestDistanceToCharacter();
 //        int output[] = c1.productExceptSelf(nums);
 //        for (int i=0; i<output.length; i++) {
 //            System.out.println(output[i]);
 //        }
-        List<Integer> finalOutput;
-        finalOutput = c1.topKFrequent(nums, 2);
+        List<List<Integer>> finalOutput = c1.subsets(nums);
+//        finalOutput = c1.topKFrequent(nums, 2);
         for (int i=0; i<finalOutput.size(); i++) {
             System.out.println(finalOutput.get(i));
         }
