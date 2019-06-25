@@ -43,17 +43,23 @@ public class Main {
 //        Node.printLinkedList(Node.sumLists(n1, n4));
 //        System.out.println(Node.isPalindrome(n1));
 //        Node.printLinkedList(Node.intersectingNode(n1, n4));
-        int[] nums = new int[]{1, 2, 3};
+//        int[] nums = new int[]{1, 2, 3};
         shortestDistanceToCharacter c1 = new shortestDistanceToCharacter();
 //        int output[] = c1.productExceptSelf(nums);
 //        for (int i=0; i<output.length; i++) {
 //            System.out.println(output[i]);
 //        }
-        List<List<Integer>> finalOutput = c1.subsets(nums);
+        int[] A = new int[] {1, 2};
+        int[] B = new int[] {-2, -1};
+        int[] C = new int[] {-1, 2};
+        int[] D = new int[] {0, 2};
+        int finalOutput = c1.fourSumCount(A, B, C, D);
+        System.out.println(finalOutput);
+//        List<List<Integer>> finalOutput = c1.subsets(nums);
 //        finalOutput = c1.topKFrequent(nums, 2);
-        for (int i=0; i<finalOutput.size(); i++) {
-            System.out.println(finalOutput.get(i));
-        }
+//        for (int i=0; i<finalOutput.size(); i++) {
+//            System.out.println(finalOutput.get(i));
+//        }
     }
 
     public static ArrayList<String> merge(String[] words, String[] more) {

@@ -103,4 +103,35 @@ public class shortestDistanceToCharacter {
         }
         return out;
     }
+
+    //Given four lists A, B, C, D of integer values, compute how many tuples (i, j, k, l)
+    //there are such that A[i] + B[j] + C[k] + D[l] is zero.
+    public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {
+        int ans  = 0;
+        HashMap<Integer, Integer> matainSet= new HashMap<>();
+        // as to get 0, handle half half.
+        for (int i=0; i < A.length; i++ ) {
+           for (int j=0; j<B.length; j++) {
+               int ans1 = A[i] + B[j];
+               if (matainSet.containsKey(ans1)) {
+                   int sum = matainSet.get(ans1);
+                   sum += 1;
+                   matainSet.replace(ans1,sum);
+               } else {
+                   matainSet.put(ans1,1);
+               }
+           }
+        }
+        // Handle C and D set:
+        for (int i=0; i < C.length; i++ ) {
+            for (int j = 0; j < D.length; j++) {
+                int ans2 = -C[i] - D[j];
+                System.out.println("Ans 2 of C and D"+ans2);
+                if (matainSet.containsKey(ans2)) {
+                    ans += matainSet.get(ans2);
+                }
+            }
+        }
+        return ans;
+    }
 }
