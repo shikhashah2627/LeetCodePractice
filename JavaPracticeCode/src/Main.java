@@ -49,17 +49,19 @@ public class Main {
 //        for (int i=0; i<output.length; i++) {
 //            System.out.println(output[i]);
 //        }
-        int[] A = new int[] {1, 2};
-        int[] B = new int[] {-2, -1};
-        int[] C = new int[] {-1, 2};
-        int[] D = new int[] {0, 2};
-        int finalOutput = c1.fourSumCount(A, B, C, D);
-        System.out.println(finalOutput);
+//        int[] A = new int[] {1, 2};
+//        int[] B = new int[] {-2, -1};
+//        int[] C = new int[] {-1, 2};
+//        int[] D = new int[] {0, 2};
+//        int finalOutput = c1.fourSumCount(A, B, C, D);
+//        System.out.println(finalOutput);
 //        List<List<Integer>> finalOutput = c1.subsets(nums);
 //        finalOutput = c1.topKFrequent(nums, 2);
 //        for (int i=0; i<finalOutput.size(); i++) {
 //            System.out.println(finalOutput.get(i));
 //        }
+
+        c1.generateParenthesis(5);
     }
 
     public static ArrayList<String> merge(String[] words, String[] more) {

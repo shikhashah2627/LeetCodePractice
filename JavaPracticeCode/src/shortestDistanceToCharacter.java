@@ -134,4 +134,77 @@ public class shortestDistanceToCharacter {
         }
         return ans;
     }
+
+    //Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+    // It should have linear complexity
+    public int singleNumber(int[] nums) {
+        // Below method takes O(n) space
+//        HashMap<Integer,Integer> checkNumber = new HashMap<>();
+//        for (int i=0; i<nums.length; i++) {
+//            if (checkNumber.containsKey(nums[i])) {
+//                int appendValue = checkNumber.get(nums[i]);
+//                appendValue++;
+//                checkNumber.replace(nums[i],appendValue);
+//            } else {
+//                checkNumber.put(nums[i],1);
+//            }
+//        }
+//        if(checkNumber.containsValue(1)) {
+//            for (Object o : checkNumber.keySet()) {
+//                if (checkNumber.get(o).equals(1)) {
+//                    return (int)o;
+//                }
+//            }
+//        }
+        // This takes O(1) space complexity
+        int ans = 0;
+        for (int i=0; i<nums.length; i++) {
+            ans ^= nums[i];
+        }
+        return ans;
+    }
+
+    //Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+    public List<String> generateParenthesis(int n) {
+            List<String> ans = new ArrayList();
+            backtrack(ans, "", 0, 0, n);
+            return ans;
+        }
+
+    public void backtrack(List<String> ans, String cur, int open, int close, int max){
+        if (cur.length() == max * 2) {
+            ans.add(cur);
+            return;
+        }
+
+        if (open < max)
+            backtrack(ans, cur+"(", open+1, close, max);
+        if (close < open)
+            backtrack(ans, cur+")", open, close+1, max);
+    }
+
+    // Given a n x n matrix where each of the rows and columns are sorted in ascending order,
+    // find the kth smallest element in the matrix.
+//    public int kthSmallest(int[][] matrix, int k) {
+//
+//        return 0;
+//    }
+
+    //Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+    //Integers in each row are sorted in ascending from left to right.
+    //Integers in each column are sorted in ascending from top to bottom.
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int row = matrix.length;
+        if (row == 0 || matrix[0].length == 0) return false;
+        for (int i=0; i<row; i++){
+            int col = matrix[i].length;
+            if (target >= matrix[i][0] && target <= matrix[i][col-1]){
+                for(int j=0; j<matrix[i].length; j++) {
+                    if (target == matrix[i][j]) return true;
+                }
+            } else continue;
+        }
+        return false;
+    }
 }
+
