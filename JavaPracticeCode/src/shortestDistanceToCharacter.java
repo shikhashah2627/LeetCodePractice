@@ -176,19 +176,30 @@ public class shortestDistanceToCharacter {
             ans.add(cur);
             return;
         }
-
         if (open < max)
             backtrack(ans, cur+"(", open+1, close, max);
         if (close < open)
             backtrack(ans, cur+")", open, close+1, max);
     }
 
-    // Given a n x n matrix where each of the rows and columns are sorted in ascending order,
+    // 378 - Given a n x n matrix where each of the rows and columns are sorted in ascending order,
     // find the kth smallest element in the matrix.
-//    public int kthSmallest(int[][] matrix, int k) {
-//
-//        return 0;
-//    }
+    public int kthSmallest(int[][] matrix, int k) {
+        if(matrix.length * matrix[0].length < k) return -1;
+
+        PriorityQueue<Integer> heap = new PriorityQueue<>();
+
+        for(int i = 0; i < matrix.length; i++){
+            for(int j = 0; j < matrix[0].length; j++){
+                heap.add(matrix[i][j]);
+            }
+        }
+
+        for(int i =0; i < k -1; i++){
+            heap.poll();
+        }
+        return heap.poll();
+    }
 
     //Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
     //Integers in each row are sorted in ascending from left to right.
@@ -205,6 +216,67 @@ public class shortestDistanceToCharacter {
             } else continue;
         }
         return false;
+    }
+
+    //Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+    //(i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
+    //You are given a target value to search. If found in the array return its index, otherwise return -1.
+    //You may assume no duplicate exists in the array.
+    //Your algorithm's runtime complexity must be in the order of O(log n).
+    public int search(int[] nums, int target) {
+        return binarysearch(nums,target,0,nums.length-1);
+    }
+    public int binarysearch(int[] nums, int target, int low, int high){
+
+        if(low <= high){
+            int mid = (low+high)/2;
+            if(nums[mid] == target) {
+                return mid;
+            }
+
+            //left sub array sorted
+            if(nums[low] <= nums[mid]) {
+                if(target >= nums[low] && target < nums[mid]){
+                    return  binarysearch(nums,target,low,mid-1);
+                } else {
+                    return binarysearch(nums,target,mid+1,high);
+                }
+
+            } else if(nums[mid] < nums[high]){
+                if(target > nums[mid] && target <= nums[high]) {
+                    return binarysearch(nums,target,mid+1,high);
+                } else{
+                    return binarysearch(nums,target,low,mid-1);
+                }
+            }
+        }
+        return -1;
+    }
+
+    public void sortColors(int[] nums) {
+        int front=0;
+        int last=nums.length-1;
+        int index=front;
+        while(index<=last) {
+            if(nums[index]==2) {
+                swap(nums,index,last);
+                last--;
+            }
+            else if(nums[index]==0) {
+                swap(nums,index,front);
+                front++;
+                index++;
+            }
+            else {
+                index++;
+            }
+
+        }
+    }
+    public void swap(int nums[],int i,int j) {
+        int temp=nums[i];
+        nums[i]=nums[j];
+        nums[j]=temp;
     }
 }
 
