@@ -20,22 +20,24 @@ public class Main {
 //        String s2 = "bca";
 //        System.out.println(isRotation(s1, s2));
 //
-//        // Ch-2 LinkedList Implementation
-//        Node n1 = new Node(7);
-//        Node n2 = new Node(5);
-//        Node n3 = new Node(6);
-//        Node n8 = new Node(8);
-//        Node n4 = new Node(1);
-//        Node n5 = new Node(8);
-//        Node n6 = new Node(5);
-//        Node n7 = new Node(6);
-//        n1.next = n2;
-//        n2.next = n3;
-////        n3.next = n4;
-//        n8.next = n4;
-//        n4.next = n5;
-//        n5.next = n6;
-//        n6.next = n7;
+        // Ch-2 LinkedList Implementation
+        Node n1 = new Node(7);
+        Node n2 = new Node(5);
+        Node n3 = new Node(6);
+        Node n8 = new Node(8);
+        Node n4 = new Node(1);
+        Node n5 = new Node(8);
+        Node n6 = new Node(5);
+        Node n7 = new Node(6);
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+        //n8.next = n4;
+        n4.next = n5;
+        n5.next = n6;
+        n6.next = n7;
+
+        Node.printLinkedList(Node.oddEvenList(n1));
 //        Node.printLinkedList(Node.removeDups(n1));
 //        Node.printLinkedList(Node.kthToLast(n1,3));
 //        Node.printLinkedList(Node.deleteMiddleNode(n1));
@@ -211,28 +213,28 @@ class Node {
     }
 
     public static Node kthToLast(Node n, int k) {
-        Node p1 = n;
-        Node p2 = n;
+        Node n1 = n;
+        Node n2 = n;
 
         for (int i = 0; i < k; i++) {
-            if (p1.next == null) return null;
-            p1 = p1.next;
+            if (n1.next == null) return null;
+            n1 = n1.next;
         }
 
-        while (p1 != null) {
-            p1 = p1.next;
-            //System.out.println("Value of p2 data = " + p2.data);
-            p2 = p2.next;
+        while (n1 != null) {
+            n1 = n1.next;
+            //System.out.println("Value of n2 data = " + n2.data);
+            n2 = n2.next;
         }
-        return p2;
+        return n2;
     }
 
     public static Node deleteMiddleNode(Node n) {
         Node head = n;
-        Node p1 = n;
+        Node n1 = n;
         int midCount = 0;
-        while (p1 != null) {
-            p1 = p1.next;
+        while (n1 != null) {
+            n1 = n1.next;
             midCount ++;
         }
         // need to get the mid value.
@@ -329,5 +331,31 @@ class Node {
         return longer;
     }
 
+
+    public static Node oddEvenList(Node head) {
+        if(head == null || head.next == null || head.next.next == null)
+            return head;
+
+        Node n1, n2, n3;
+        n1 = head;
+        n2 = head.next;
+        n3 = head.next;
+
+        while(n1.next != null) {
+            n1.next = n1.next.next;
+            //Checks for n2.next is null  for even length linked list 
+            if(n2.next != null) {
+                n2.next = n2.next.next;
+                n2 = n2.next;
+            }
+            //Checks for n1.next is null for even length linked list 
+            if(n1.next == null)
+                break;
+            n1 = n1.next;
+
+        }
+        n1.next = n3;
+        return head;
+    }
 
 }
