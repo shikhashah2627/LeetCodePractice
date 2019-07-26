@@ -429,13 +429,25 @@ class Node {
 //                n.next = head;
 //                head.prev = n;
 //                return n;
-//            }
+//            }s
 //            else {
 //                DoublyLinkedListNode rest = sortedInsert(head.next, data);
 //                head.next = rest;
 //                rest.prev = head;
 //                return head;
 //            }
+//        static DoublyLinkedListNode reverse(DoublyLinkedListNode head) {
+//            DoublyLinkedListNode copy = head;
+//            DoublyLinkedListNode newHead = head;
+//            while(copy != null) {
+//                DoublyLinkedListNode prev = copy.prev;
+//                copy.prev = copy.next;
+//                copy.next = prev;
+//                newHead = copy;
+//                copy = copy.prev;
+//            }
+//            return newHead;
+//        }
         }
 
 
