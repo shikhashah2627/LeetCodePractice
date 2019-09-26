@@ -37,7 +37,7 @@ public class Main {
         n5.next = n6;
         n6.next = n7;
 
-        Node.printLinkedList(Node.oddEvenList(n1));
+//        Node.printLinkedList(Node.oddEvenList(n1));
 //        Node.printLinkedList(Node.removeDups(n1));
 //        Node.printLinkedList(Node.kthToLast(n1,3));
 //        Node.printLinkedList(Node.deleteMiddleNode(n1));
@@ -46,7 +46,7 @@ public class Main {
 //        System.out.println(Node.isPalindrome(n1));
 //        Node.printLinkedList(Node.intersectingNode(n1, n4));
 //        int[] nums = new int[]{1, 2, 3};
-        shortestDistanceToCharacter c1 = new shortestDistanceToCharacter();
+//        shortestDistanceToCharacter c1 = new shortestDistanceToCharacter();
 //        int output[] = c1.productExceptSelf(nums);
 //        for (int i=0; i<output.length; i++) {
 //            System.out.println(output[i]);
@@ -63,7 +63,20 @@ public class Main {
 //            System.out.println(finalOutput.get(i));
 //        }
 
-        c1.generateParenthesis(5);
+//        c1.generateParenthesis(5);
+
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.left.left = new TreeNode(3);
+        root.left.right = new TreeNode(4);
+        root.right = new TreeNode(5);
+        root.right.right = new TreeNode(6);
+
+        Solution sol = new Solution();
+        sol.flatten(root);
+
+
+
     }
 
     public static ArrayList<String> merge(String[] words, String[] more) {

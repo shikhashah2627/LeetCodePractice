@@ -20,5 +20,18 @@ class Solution {
             ArrayList<Integer> nums = inorder(root, new ArrayList<Integer>());
             return nums.get(k - 1);
         }
+
+        TreeNode next = null;
+        public void flatten(TreeNode root) {
+            if(root == null)
+                return;
+            flatten(root.right);
+            flatten(root.left);
+            root.right = next;
+            root.left = null;
+//            System.out.println(next.val);
+            next = root;
+        }
     }
+
 
